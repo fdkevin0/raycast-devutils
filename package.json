@@ -1,0 +1,332 @@
+{
+  "$schema": "https://www.raycast.com/schemas/extension.json",
+  "name": "devutils",
+  "title": "DevUtils",
+  "description": "All-in-one Toolbox for Developers — formatting, encoding, conversion, and more. No external app required.",
+  "icon": "devutils.png",
+  "author": "fdkevin",
+  "categories": [
+    "Developer Tools",
+    "Productivity"
+  ],
+  "license": "MIT",
+  "commands": [
+    {
+      "name": "auto",
+      "title": "Auto Detect the Best Tool",
+      "subtitle": "DevUtils",
+      "description": "Let the auto-detect feature decide which tool to activate based on your current clipboard string",
+      "mode": "no-view"
+    },
+    {
+      "name": "backslash",
+      "title": "Backslash Escape/Unescape",
+      "subtitle": "DevUtils",
+      "description": "Escape (or unescape) backslashes in your current clipboard string",
+      "mode": "no-view"
+    },
+    {
+      "name": "base64encode",
+      "title": "Base64 String Encode/Decode",
+      "subtitle": "DevUtils",
+      "description": "Decode the Base64 string in clipboard (if it's decodable)",
+      "mode": "no-view"
+    },
+    {
+      "name": "base64image",
+      "title": "Base64 Image Encode/Decode",
+      "subtitle": "DevUtils",
+      "description": "Decode the Base64 image string in clipboard, or encode an image file",
+      "mode": "no-view"
+    },
+    {
+      "name": "colortools",
+      "title": "Color Converter",
+      "subtitle": "DevUtils",
+      "description": "Pick and convert colors (hex, rgb, hsl, etc.)",
+      "mode": "view"
+    },
+    {
+      "name": "cronparser",
+      "title": "Cron Job Parser",
+      "subtitle": "DevUtils",
+      "description": "Parse the cron job expression in clipboard",
+      "mode": "view"
+    },
+    {
+      "name": "cssformatter",
+      "title": "CSS Beautify/Minify",
+      "subtitle": "DevUtils",
+      "description": "Beautify or minify your current clipboard as CSS",
+      "mode": "no-view"
+    },
+    {
+      "name": "csv2json",
+      "title": "CSV to JSON",
+      "subtitle": "DevUtils",
+      "description": "Convert your current clipboard from CSV to JSON",
+      "mode": "no-view"
+    },
+    {
+      "name": "erbformatter",
+      "title": "ERB Beautify/Minify",
+      "subtitle": "DevUtils",
+      "description": "Beautify or minify your current clipboard as ERB",
+      "mode": "no-view"
+    },
+    {
+      "name": "hashing",
+      "title": "Hash Generator",
+      "subtitle": "DevUtils",
+      "description": "Calculate the hash of your current clipboard string",
+      "mode": "view"
+    },
+    {
+      "name": "html2jsx",
+      "title": "HTML to JSX",
+      "subtitle": "DevUtils",
+      "description": "Convert the HTML string in clipboard to JSX",
+      "mode": "no-view"
+    },
+    {
+      "name": "htmlencode",
+      "title": "HTML Entity Encode/Decode",
+      "subtitle": "DevUtils",
+      "description": "Escape (or unescape) the HTML entities in your current clipboard string",
+      "mode": "no-view"
+    },
+    {
+      "name": "htmlformatter",
+      "title": "HTML Beautify/Minify",
+      "subtitle": "DevUtils",
+      "description": "Beautify or minify your current clipboard as HTML",
+      "mode": "no-view"
+    },
+    {
+      "name": "htmlpreview",
+      "title": "HTML Preview",
+      "subtitle": "DevUtils",
+      "description": "Show a HTML preview of your current clipboard string",
+      "mode": "view"
+    },
+    {
+      "name": "jsformatter",
+      "title": "JS Beautify/Minify",
+      "subtitle": "DevUtils",
+      "description": "Beautify or minify your current clipboard as JavaScript",
+      "mode": "no-view"
+    },
+    {
+      "name": "json2csv",
+      "title": "JSON to CSV",
+      "subtitle": "DevUtils",
+      "description": "Convert your current clipboard from JSON to CSV",
+      "mode": "no-view"
+    },
+    {
+      "name": "json2php",
+      "title": "JSON to PHP Array",
+      "subtitle": "DevUtils",
+      "description": "Convert a JSON string in your clipboard to PHP array syntax",
+      "mode": "no-view"
+    },
+    {
+      "name": "json2yaml",
+      "title": "JSON to YAML",
+      "subtitle": "DevUtils",
+      "description": "Convert your current clipboard from JSON to YAML",
+      "mode": "no-view"
+    },
+    {
+      "name": "jsonformatter",
+      "title": "JSON Format/Validate",
+      "subtitle": "DevUtils",
+      "description": "Format the JSON string currently in your clipboard",
+      "mode": "no-view"
+    },
+    {
+      "name": "jwt",
+      "title": "JWT Debugger",
+      "subtitle": "DevUtils",
+      "description": "Decode and inspect the current JWT token in your clipboard",
+      "mode": "view"
+    },
+    {
+      "name": "lessformatter",
+      "title": "LESS Beautify/Minify",
+      "subtitle": "DevUtils",
+      "description": "Beautify or minify your current clipboard as LESS",
+      "mode": "no-view"
+    },
+    {
+      "name": "loremipsum",
+      "title": "Lorem Ipsum Generator",
+      "subtitle": "DevUtils",
+      "description": "Generate lorem ipsum placeholder text",
+      "mode": "view"
+    },
+    {
+      "name": "markdownpreview",
+      "title": "Markdown Preview",
+      "subtitle": "DevUtils",
+      "description": "Preview the markdown string currently in your clipboard",
+      "mode": "view"
+    },
+    {
+      "name": "numberbase",
+      "title": "Number Base Converter",
+      "subtitle": "DevUtils",
+      "description": "Convert numbers between bases (oct, hex, binary, etc.)",
+      "mode": "no-view"
+    },
+    {
+      "name": "php2json",
+      "title": "PHP Array to JSON",
+      "subtitle": "DevUtils",
+      "description": "Convert a PHP array string in your clipboard to JSON",
+      "mode": "no-view"
+    },
+    {
+      "name": "phpserializer",
+      "title": "PHP Serializer",
+      "subtitle": "DevUtils",
+      "description": "Serialize data to PHP serialize format",
+      "mode": "no-view"
+    },
+    {
+      "name": "phpunserializer",
+      "title": "PHP Unserializer",
+      "subtitle": "DevUtils",
+      "description": "Unserialize a PHP serialized string to JSON",
+      "mode": "no-view"
+    },
+    {
+      "name": "qrcode",
+      "title": "QR Code Generator",
+      "subtitle": "DevUtils",
+      "description": "Generate a QR code from your current clipboard string",
+      "mode": "view"
+    },
+    {
+      "name": "querystringparser",
+      "title": "URL Parser",
+      "subtitle": "DevUtils",
+      "description": "Parse the URL string currently in your clipboard",
+      "mode": "view"
+    },
+    {
+      "name": "randomstringgenerator",
+      "title": "Random String Generator",
+      "subtitle": "DevUtils",
+      "description": "Generate passwords or random strings with configurable options",
+      "mode": "view"
+    },
+    {
+      "name": "regextester",
+      "title": "RegExp Tester",
+      "subtitle": "DevUtils",
+      "description": "Test your regular expression with a string and inspect matches",
+      "mode": "view"
+    },
+    {
+      "name": "scssformatter",
+      "title": "SCSS Beautify/Minify",
+      "subtitle": "DevUtils",
+      "description": "Beautify or minify your current clipboard as SCSS",
+      "mode": "no-view"
+    },
+    {
+      "name": "sqlformatter",
+      "title": "SQL Formatter",
+      "subtitle": "DevUtils",
+      "description": "Format the SQL string currently in your clipboard",
+      "mode": "no-view"
+    },
+    {
+      "name": "stringcaseconverter",
+      "title": "String Case Converter",
+      "subtitle": "DevUtils",
+      "description": "Convert a string in clipboard into various naming conventions",
+      "mode": "no-view"
+    },
+    {
+      "name": "stringinspect",
+      "title": "String Inspector",
+      "subtitle": "DevUtils",
+      "description": "Inspect your current clipboard string (length, words, characters, etc.)",
+      "mode": "view"
+    },
+    {
+      "name": "textdiff",
+      "title": "Text Diff Checker",
+      "subtitle": "DevUtils",
+      "description": "Compare two texts and find differences",
+      "mode": "view"
+    },
+    {
+      "name": "unixtime",
+      "title": "Unix Time Converter",
+      "subtitle": "DevUtils",
+      "description": "Parse and convert UNIX timestamps",
+      "mode": "no-view"
+    },
+    {
+      "name": "urlencode",
+      "title": "URL Encode/Decode",
+      "subtitle": "DevUtils",
+      "description": "Encode or decode URL strings in your clipboard",
+      "mode": "no-view"
+    },
+    {
+      "name": "uuidtool",
+      "title": "UUID/ULID Generate/Decode",
+      "subtitle": "DevUtils",
+      "description": "Generate UUIDs/ULIDs or decode UUIDs in your clipboard",
+      "mode": "view"
+    },
+    {
+      "name": "xmlformatter",
+      "title": "XML Beautify/Minify",
+      "subtitle": "DevUtils",
+      "description": "Beautify or minify your current clipboard as XML",
+      "mode": "no-view"
+    },
+    {
+      "name": "yaml2json",
+      "title": "YAML to JSON",
+      "subtitle": "DevUtils",
+      "description": "Convert your current clipboard from YAML to JSON",
+      "mode": "no-view"
+    }
+  ],
+  "dependencies": {
+    "@raycast/api": "^1.104.0",
+    "@raycast/utils": "^2.2.0",
+    "diff": "^9.0.0",
+    "js-yaml": "^4.2.0",
+    "prettier": "^3.8.0",
+    "qrcode": "^1.5.4",
+    "sql-formatter": "^15.8.0"
+  },
+  "devDependencies": {
+    "@raycast/eslint-config": "^2.1.0",
+    "@types/diff": "^8.0.0",
+    "@types/js-yaml": "^4.0.9",
+    "@types/node": "^22.0.0",
+    "@types/qrcode": "^1.5.6",
+    "@types/react": "^19.0.0",
+    "eslint": "^9.0.0",
+    "prettier": "^3.8.0",
+    "typescript": "^5.9.0"
+  },
+  "scripts": {
+    "build": "ray build -e dist",
+    "dev": "ray develop",
+    "fix-lint": "ray lint --fix",
+    "lint": "ray lint",
+    "publish": "npx @raycast/api@latest publish"
+  },
+  "platforms": [
+    "macOS"
+  ]
+}

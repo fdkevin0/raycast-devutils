@@ -208,6 +208,13 @@
       "mode": "view"
     },
     {
+      "name": "qrcodedecode",
+      "title": "QR Code Decoder from Image",
+      "subtitle": "DevUtils",
+      "description": "Decode QR codes from screenshots or image files",
+      "mode": "view"
+    },
+    {
       "name": "querystringparser",
       "title": "URL Parser",
       "subtitle": "DevUtils",
@@ -303,7 +310,9 @@
     "@raycast/api": "^1.104.0",
     "@raycast/utils": "^2.2.0",
     "diff": "^9.0.0",
+    "jimp": "^1.6.1",
     "js-yaml": "^4.2.0",
+    "jsqr": "^1.4.0",
     "prettier": "^3.8.0",
     "qrcode": "^1.5.4",
     "sql-formatter": "^15.8.0"
@@ -311,6 +320,7 @@
   "devDependencies": {
     "@raycast/eslint-config": "^2.1.0",
     "@types/diff": "^8.0.0",
+    "@types/jimp": "^0.2.1",
     "@types/js-yaml": "^4.0.9",
     "@types/node": "^22.0.0",
     "@types/qrcode": "^1.5.6",

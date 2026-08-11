@@ -4,6 +4,7 @@
   "compilerOptions": {
     "lib": ["ES2023"],
     "module": "commonjs",
+    "allowImportingTsExtensions": true,
     "target": "ES2022",
     "strict": true,
     "isolatedModules": true,

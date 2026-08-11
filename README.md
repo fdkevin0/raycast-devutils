@@ -55,6 +55,7 @@ This extension provides 40+ developer utilities directly inline:
 - **QR Code Generator** — Generate QR codes from text
 - **RegExp Tester** — Test regular expressions interactively
 - **Text Diff Checker** — Compare two texts and find differences
+- **Translate with macOS** — Translate argument, selected, or clipboard text to Simplified Chinese
 
 ### Preview
 
@@ -78,3 +79,38 @@ Interactive tools (Form-based) let you configure options before processing.
 ## No External Dependencies
 
 This extension is completely self-contained. It does **not** require the DevUtils macOS app.
+
+## macOS System Translation Setup
+
+The **Translate with macOS** command uses Apple's **Translate Text** action through macOS Shortcuts. It does not use an API key or send text to a third-party translation provider. macOS controls the underlying translation implementation and language resources, so this extension does not claim that translation is always offline.
+
+Create a Shortcut named exactly `Raycast.Translate.ZH`:
+
+1. Open the Shortcuts app and create a new Shortcut.
+2. Configure it to receive **Shortcut Input**, treated as text.
+3. Add **Translate Text** with **Detect Automatically** as the source language and **Chinese, Simplified** as the target.
+4. Add **Stop and Output**, returning the translated text.
+5. Keep the Shortcut name unchanged and run it once manually to resolve any language-resource download or permission prompt.
+
+The command resolves input in this order: its optional text argument, selected text, then plain clipboard text. Selection capture may require Raycast's Accessibility permission; if selection is unavailable, clipboard input still works. Input is trimmed and limited to 20,000 Unicode characters.
+
+On first use, allow Raycast to control Shortcuts Events. If permission was denied, enable it at **System Settings → Privacy & Security → Automation → Raycast → Shortcuts Events**.
+
+### Translation Troubleshooting
+
+- **Shortcut not found:** confirm it is named `Raycast.Translate.ZH` exactly.
+- **Empty result:** ensure **Stop and Output** is the final action and returns translated text.
+- **Timeout:** run the Shortcut manually, resolve any resource download or permission prompt, then retry later.
+- **Selection unavailable:** grant Accessibility permission or copy the text and use the clipboard fallback.
+
+The command never terminates macOS translation processes, runs only one translation per command lifecycle, and does not log or upload source or translated text. Copyable diagnostics deliberately omit stderr and contain only Raycast and Darwin kernel versions, the error category, and exit code.
+
+### Known Limitations
+
+- macOS Shortcuts can occasionally time out or leave system translation unresponsive.
+- The first translation for a language may require a resource download or permission prompt.
+- This version always detects the source language and translates to Simplified Chinese.
+- Concurrent and batch translation are unsupported.
+- The required `Raycast.Translate.ZH` Shortcut must be created separately; it cannot be assumed to exist with a Raycast Store installation.
+
+Run unit tests with `npm test`. The Shortcuts integration must also be verified manually in Raycast on a physical Mac; no macOS or Raycast version is claimed as tested by this repository until that manual verification is recorded.

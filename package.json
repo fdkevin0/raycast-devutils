@@ -271,6 +271,21 @@
       "mode": "view"
     },
     {
+      "name": "translate",
+      "title": "Translate with macOS",
+      "subtitle": "DevUtils",
+      "description": "Translate text to Simplified Chinese using a macOS Shortcut",
+      "mode": "view",
+      "arguments": [
+        {
+          "name": "text",
+          "placeholder": "Text",
+          "type": "text",
+          "required": false
+        }
+      ]
+    },
+    {
       "name": "unixtime",
       "title": "Unix Time Converter",
       "subtitle": "DevUtils",
@@ -334,6 +349,7 @@
     "dev": "ray develop",
     "fix-lint": "ray lint --fix",
     "lint": "ray lint",
+    "test": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON --experimental-strip-types --test src/*.test.ts src/**/*.test.ts",
     "publish": "npx @raycast/api@latest publish"
   },
   "platforms": [

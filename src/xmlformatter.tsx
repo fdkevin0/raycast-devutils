@@ -36,7 +36,11 @@ function formatXml(xml: string): string {
 }
 
 function minifyXml(xml: string): string {
-  return xml.replace(/<!--[\s\S]*?-->/g, "").replace(/>\s+</g, "><").replace(/\s+/g, " ").trim();
+  return xml
+    .replace(/<!--[\s\S]*?-->/g, "")
+    .replace(/>\s+</g, "><")
+    .replace(/\s+/g, " ")
+    .trim();
 }
 
 export default async function Command() {

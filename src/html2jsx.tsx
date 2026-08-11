@@ -49,7 +49,7 @@ export default async function Command() {
     jsx = jsx.replace(/\{<!-- /g, "{/* ").replace(/ -->\}/g, " */}");
 
     await copyToClipboard(jsx.trim(), "HTML → JSX converted");
-  } catch (error) {
+  } catch {
     await showToast({
       style: Toast.Style.Failure,
       title: "Could not convert HTML to JSX",

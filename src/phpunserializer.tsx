@@ -51,7 +51,7 @@ function phpUnserialize(input: string): unknown {
         while (s[pos] !== ":") lenStr += s[pos++];
         const len = parseInt(lenStr, 10);
         pos++; // skip :
-        if (s[pos] !== '"') throw new Error("Expected \" after s:len:");
+        if (s[pos] !== '"') throw new Error('Expected " after s:len:');
         pos++;
         let str = "";
         while (str.length < len) {

@@ -58,7 +58,7 @@ export default function Command() {
         "```",
         output,
         "```",
-      ].join("\n")
+      ].join("\n"),
     );
 
     Clipboard.copy(output);
@@ -83,7 +83,10 @@ export default function Command() {
     <Form
       actions={
         <ActionPanel>
-          <Action.SubmitForm title="Generate" onSubmit={(values) => generate(values as { length: string; charset: string; count: string })} />
+          <Action.SubmitForm
+            title="Generate"
+            onSubmit={(values) => generate(values as { length: string; charset: string; count: string })}
+          />
         </ActionPanel>
       }
     >

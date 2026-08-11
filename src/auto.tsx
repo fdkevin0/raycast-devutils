@@ -21,7 +21,9 @@ export default async function Command() {
   try {
     JSON.parse(trimmed);
     detections.push({ name: "jsonformatter", score: 90 });
-  } catch { /* not JSON */ }
+  } catch {
+    /* not JSON */
+  }
 
   // JWT detection
   if (/^[A-Za-z0-9_-]+\.[A-Za-z0-9_-]+\.[A-Za-z0-9_-]+$/.test(trimmed)) {
@@ -71,7 +73,7 @@ export default async function Command() {
   }
 
   // Cron expression
-  if (/^(\*|[\d,*\/-]+)\s+(\*|[\d,*\/-]+)\s+(\*|[\d,*\/-]+)\s+(\*|[\d,*\/-]+)\s+(\*|[\d,*\/-]+)$/.test(trimmed)) {
+  if (/^(\*|[\d,*/-]+)\s+(\*|[\d,*/-]+)\s+(\*|[\d,*/-]+)\s+(\*|[\d,*/-]+)\s+(\*|[\d,*/-]+)$/.test(trimmed)) {
     detections.push({ name: "cronparser", score: 50 });
   }
 
@@ -95,7 +97,10 @@ export default async function Command() {
     await Clipboard.copy(`${best.name}`);
   } else {
     // Multiple matches - show options
-    const suggestions = detections.slice(0, 3).map((d) => getToolDisplayName(d.name)).join(", ");
+    const suggestions = detections
+      .slice(0, 3)
+      .map((d) => getToolDisplayName(d.name))
+      .join(", ");
     await showHUD(`Suggestions: ${suggestions}`);
     await Clipboard.copy(`${best.name}`);
   }

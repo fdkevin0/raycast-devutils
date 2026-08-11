@@ -1,5 +1,4 @@
-import { Action, ActionPanel, Form, Detail, showToast, Toast, Clipboard, getPreferenceValues } from "@raycast/api";
-import { usePromise } from "@raycast/utils";
+import { Action, ActionPanel, Form, Detail, showToast, Toast, Clipboard } from "@raycast/api";
 import { exec } from "child_process";
 import { promisify } from "util";
 import { useState } from "react";
@@ -20,7 +19,6 @@ interface DecodeResult {
 export default function Command() {
   const [result, setResult] = useState<DecodeResult | null>(null);
   const [isProcessing, setIsProcessing] = useState(false);
-  const [lastImagePath, setLastImagePath] = useState<string | null>(null);
 
   async function takeScreenshot(): Promise<string> {
     const tmpPath = path.join(os.tmpdir(), `qrcode-scan-${Date.now()}.png`);
@@ -76,7 +74,12 @@ export default function Command() {
           { x: 0, y: 0, w: Math.floor(width * 0.5), h: Math.floor(height * 0.5) },
           { x: Math.floor(width * 0.5), y: 0, w: Math.floor(width * 0.5), h: Math.floor(height * 0.5) },
           { x: 0, y: Math.floor(height * 0.5), w: Math.floor(width * 0.5), h: Math.floor(height * 0.5) },
-          { x: Math.floor(width * 0.5), y: Math.floor(height * 0.5), w: Math.floor(width * 0.5), h: Math.floor(height * 0.5) },
+          {
+            x: Math.floor(width * 0.5),
+            y: Math.floor(height * 0.5),
+            w: Math.floor(width * 0.5),
+            h: Math.floor(height * 0.5),
+          },
         ];
 
         for (const win of windows) {
@@ -117,7 +120,6 @@ export default function Command() {
     try {
       await showToast({ style: Toast.Style.Animated, title: "Select screen area to capture..." });
       const imagePath = await takeScreenshot();
-      setLastImagePath(imagePath);
       await showToast({ style: Toast.Style.Animated, title: "Decoding QR code..." });
       const decodeResult = await decodeQrFromImage(imagePath);
       setResult(decodeResult);
@@ -154,7 +156,6 @@ export default function Command() {
         return;
       }
 
-      setLastImagePath(filePath);
       await showToast({ style: Toast.Style.Animated, title: "Decoding QR code..." });
       const decodeResult = await decodeQrFromImage(filePath);
       setResult(decodeResult);
@@ -183,9 +184,7 @@ export default function Command() {
     const markdown = [
       `# QR Code Decoder`,
       "",
-      isSuccess
-        ? `✅ **Successfully decoded**`
-        : `❌ **${result.error}**`,
+      isSuccess ? `✅ **Successfully decoded**` : `❌ **${result.error}**`,
       "",
       result.imagePath ? `**Source:** \`${path.basename(result.imagePath)}\`` : "",
       "",
@@ -222,10 +221,7 @@ export default function Command() {
                 handleTakeScreenshot();
               }}
             />
-            <Action
-              title="Back to File Selection"
-              onAction={() => setResult(null)}
-            />
+            <Action title="Back to File Selection" onAction={() => setResult(null)} />
             <Action.CopyToClipboard title="Copy Raw Markdown" content={markdown} />
           </ActionPanel>
         }
@@ -245,10 +241,7 @@ export default function Command() {
               handleFileSubmit(values as unknown as { imageFile: string[] });
             }}
           />
-          <Action
-            title="📸 Take Screenshot"
-            onAction={handleTakeScreenshot}
-          />
+          <Action title="📸 Take Screenshot" onAction={handleTakeScreenshot} />
         </ActionPanel>
       }
     >

@@ -22,7 +22,10 @@ export default async function Command() {
 
     // Try to detect PHP code like: $var = ['key' => 'value'];
     // or: return ['key' => 'value'];
-    let phpCode = trimmed.replace(/^\$\w+\s*=\s*/, "").replace(/^return\s+/, "").replace(/;\s*$/, "");
+    let phpCode = trimmed
+      .replace(/^\$\w+\s*=\s*/, "")
+      .replace(/^return\s+/, "")
+      .replace(/;\s*$/, "");
 
     // Basic PHP array literal to JSON conversion, then serialize
     phpCode = phpCode
@@ -31,14 +34,11 @@ export default async function Command() {
       .replace(/'(?:\\.|[^'\\])*'/g, (m) => `"${m.slice(1, -1).replace(/"/g, '\\"')}"`);
 
     // Replace remaining ( with [ and ) with ]
-    let depth = 0;
     let result = "";
     for (const ch of phpCode) {
       if (ch === "(") {
-        depth++;
         result += "[";
       } else if (ch === ")") {
-        depth--;
         result += "]";
       } else {
         result += ch;

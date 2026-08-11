@@ -7,7 +7,10 @@ import { showToast, Toast } from "@raycast/api";
  */
 function phpArrayToJson(text: string): string {
   // Remove PHP tags
-  let s = text.replace(/<\?php\s*/gi, "").replace(/\?>\s*$/g, "").trim();
+  let s = text
+    .replace(/<\?php\s*/gi, "")
+    .replace(/\?>\s*$/g, "")
+    .trim();
 
   // Remove "return" keyword
   s = s.replace(/^return\s+/, "");
@@ -25,7 +28,6 @@ function phpArrayToJson(text: string): string {
   // Handle array( ... ) -> [ ... ]
   s = s.replace(/\barray\s*\(/g, "[");
   // Close unmatched parentheses with ]
-  let depth = 0;
   let result = "";
   let inString = false;
   let stringChar = "";
@@ -46,10 +48,8 @@ function phpArrayToJson(text: string): string {
         stringChar = char;
         result += '"'; // Convert to double quotes for JSON
       } else if (char === "(") {
-        depth++;
         result += "[";
       } else if (char === ")") {
-        depth--;
         result += "]";
       } else {
         result += char;
@@ -73,7 +73,7 @@ export default async function Command() {
   try {
     const json = phpArrayToJson(text);
     await copyToClipboard(json, "PHP → JSON");
-  } catch (error) {
+  } catch {
     await showToast({
       style: Toast.Style.Failure,
       title: "Could not convert PHP to JSON",

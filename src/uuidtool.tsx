@@ -34,7 +34,7 @@ export default function Command() {
       const items: string[] = [];
       for (let i = 0; i < count; i++) {
         if (type === "uuid") {
-          let id = version === "v4" ? randomUUID() : randomUUID();
+          const id = version === "v4" ? randomUUID() : randomUUID();
           // Simulate v1, v3, v5 differences (v7 not available in Node)
           items.push(uppercase ? id.toUpperCase() : id);
         } else {
@@ -53,11 +53,14 @@ export default function Command() {
           "```",
           lines,
           "```",
-        ].join("\n")
+        ].join("\n"),
       );
 
       Clipboard.copy(lines);
-      showToast({ style: Toast.Style.Success, title: `Generated ${count} ${type.toUpperCase()}(s) and copied to clipboard` });
+      showToast({
+        style: Toast.Style.Success,
+        title: `Generated ${count} ${type.toUpperCase()}(s) and copied to clipboard`,
+      });
     } catch (error) {
       showToast({ style: Toast.Style.Failure, title: "Generation error", message: String(error) });
     }

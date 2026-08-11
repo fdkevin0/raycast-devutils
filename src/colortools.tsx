@@ -13,18 +13,28 @@ function rgbToHex(r: number, g: number, b: number): string {
 }
 
 function rgbToHsl(r: number, g: number, b: number): [number, number, number] {
-  r /= 255; g /= 255; b /= 255;
-  const max = Math.max(r, g, b), min = Math.min(r, g, b);
-  let h = 0, s = 0;
+  r /= 255;
+  g /= 255;
+  b /= 255;
+  const max = Math.max(r, g, b),
+    min = Math.min(r, g, b);
+  let h = 0,
+    s = 0;
   const l = (max + min) / 2;
 
   if (max !== min) {
     const d = max - min;
     s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
     switch (max) {
-      case r: h = ((g - b) / d + (g < b ? 6 : 0)) / 6; break;
-      case g: h = ((b - r) / d + 2) / 6; break;
-      case b: h = ((r - g) / d + 4) / 6; break;
+      case r:
+        h = ((g - b) / d + (g < b ? 6 : 0)) / 6;
+        break;
+      case g:
+        h = ((b - r) / d + 2) / 6;
+        break;
+      case b:
+        h = ((r - g) / d + 4) / 6;
+        break;
     }
   }
 
@@ -32,18 +42,34 @@ function rgbToHsl(r: number, g: number, b: number): [number, number, number] {
 }
 
 function hslToRgb(h: number, s: number, l: number): [number, number, number] {
-  s /= 100; l /= 100;
+  s /= 100;
+  l /= 100;
   const c = (1 - Math.abs(2 * l - 1)) * s;
   const x = c * (1 - Math.abs(((h / 60) % 2) - 1));
   const m = l - c / 2;
-  let r = 0, g = 0, b = 0;
+  let r = 0,
+    g = 0,
+    b = 0;
 
-  if (h < 60) { r = c; g = x; }
-  else if (h < 120) { r = x; g = c; }
-  else if (h < 180) { g = c; b = x; }
-  else if (h < 240) { g = x; b = c; }
-  else if (h < 300) { r = x; b = c; }
-  else { r = c; b = x; }
+  if (h < 60) {
+    r = c;
+    g = x;
+  } else if (h < 120) {
+    r = x;
+    g = c;
+  } else if (h < 180) {
+    g = c;
+    b = x;
+  } else if (h < 240) {
+    g = x;
+    b = c;
+  } else if (h < 300) {
+    r = x;
+    b = c;
+  } else {
+    r = c;
+    b = x;
+  }
 
   return [Math.round((r + m) * 255), Math.round((g + m) * 255), Math.round((b + m) * 255)];
 }
@@ -74,14 +100,18 @@ export default function Command() {
       else if (trimmed.includes(",")) {
         const parts = trimmed.match(/[\d.]+/g);
         if (!parts || parts.length < 3) throw new Error("Invalid RGB");
-        r = parseInt(parts[0]); g = parseInt(parts[1]); b = parseInt(parts[2]);
+        r = parseInt(parts[0]);
+        g = parseInt(parts[1]);
+        b = parseInt(parts[2]);
       }
       // HSL
       else if (trimmed.toLowerCase().includes("hsl")) {
         const parts = trimmed.match(/[\d.]+/g);
         if (!parts || parts.length < 3) throw new Error("Invalid HSL");
         const [hr, hg, hb] = hslToRgb(parseFloat(parts[0]), parseFloat(parts[1]), parseFloat(parts[2]));
-        r = hr; g = hg; b = hb;
+        r = hr;
+        g = hg;
+        b = hb;
       } else {
         throw new Error("Unrecognized color format");
       }
@@ -139,11 +169,19 @@ export default function Command() {
       isLoading={isLoading}
       actions={
         <ActionPanel>
-          <Action.SubmitForm title="Convert Color" onSubmit={(values) => convert((values as { color: string }).color)} />
+          <Action.SubmitForm
+            title="Convert Color"
+            onSubmit={(values) => convert((values as { color: string }).color)}
+          />
         </ActionPanel>
       }
     >
-      <Form.TextField id="color" title="Color" placeholder="#FF5733, rgb(255,87,51), hsl(9,100%,60%)" defaultValue={clipboardText || ""} />
+      <Form.TextField
+        id="color"
+        title="Color"
+        placeholder="#FF5733, rgb(255,87,51), hsl(9,100%,60%)"
+        defaultValue={clipboardText || ""}
+      />
     </Form>
   );
 }

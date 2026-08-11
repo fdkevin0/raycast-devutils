@@ -40,8 +40,6 @@ export default function Command() {
     // Statistics
     const added = diffs.filter((d) => d.added).length;
     const removed = diffs.filter((d) => d.removed).length;
-    const unchanged = diffs.filter((d) => !d.added && !d.removed).length;
-
     output += `**Changes:** `;
     if (removed > 0) output += `${removed} removed, `;
     if (added > 0) output += `${added} added`;
@@ -99,7 +97,12 @@ export default function Command() {
         </ActionPanel>
       }
     >
-      <Form.TextArea id="text1" title="Text 1 (Original)" placeholder="Original text..." defaultValue={clipboardText || ""} />
+      <Form.TextArea
+        id="text1"
+        title="Text 1 (Original)"
+        placeholder="Original text..."
+        defaultValue={clipboardText || ""}
+      />
       <Form.TextArea id="text2" title="Text 2 (Modified)" placeholder="Modified text..." />
       <Form.Dropdown id="diffType" title="Diff Type" defaultValue="lines">
         <Form.Dropdown.Item value="lines" title="Lines" />

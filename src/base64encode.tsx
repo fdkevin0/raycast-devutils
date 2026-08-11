@@ -8,7 +8,7 @@ export default async function Command() {
   try {
     const decoded = Buffer.from(text.trim(), "base64").toString("utf-8");
     // Check if the decoded string looks like valid text
-    if (decoded && /^[\x20-\x7E\t\n\r -￿]*$/.test(decoded)) {
+    if (decoded && /^[\x20-\x7E\t\n\r\u00A0-\uFFFF]*$/.test(decoded)) {
       await copyToClipboard(decoded, "Decoded from Base64");
       return;
     }

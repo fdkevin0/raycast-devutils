@@ -16,7 +16,15 @@ export default function Command() {
         return `## Cron Parser\n\n⚠️ Expected 5-7 fields but got ${fields.length}. A standard cron expression has 5 fields.`;
       }
 
-      const labels = ["Minute", "Hour", "Day of Month", "Month", "Day of Week", "Year (optional)", "Seconds (optional)"];
+      const labels = [
+        "Minute",
+        "Hour",
+        "Day of Month",
+        "Month",
+        "Day of Week",
+        "Year (optional)",
+        "Seconds (optional)",
+      ];
       const ranges = [
         [0, 59],
         [0, 23],
@@ -27,7 +35,21 @@ export default function Command() {
         [0, 59],
       ];
 
-      const monthNames = ["", "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+      const monthNames = [
+        "",
+        "January",
+        "February",
+        "March",
+        "April",
+        "May",
+        "June",
+        "July",
+        "August",
+        "September",
+        "October",
+        "November",
+        "December",
+      ];
       const dayNames = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
 
       function describeField(value: string, label: string, range: number[]): string {
@@ -42,7 +64,9 @@ export default function Command() {
             parts.push(`Every ${stepNum}${getOrdinal(stepNum)} ${label.toLowerCase()}`);
           } else {
             const [start, end] = base.split("-");
-            parts.push(`Every ${stepNum}${getOrdinal(stepNum)} ${label.toLowerCase()} from ${start} to ${end || range[1]}`);
+            parts.push(
+              `Every ${stepNum}${getOrdinal(stepNum)} ${label.toLowerCase()} from ${start} to ${end || range[1]}`,
+            );
           }
         } else if (value.includes("-")) {
           const [start, end] = value.split("-");
@@ -75,10 +99,14 @@ export default function Command() {
       function getOrdinal(n: number): string {
         if (n % 100 >= 11 && n % 100 <= 13) return "th";
         switch (n % 10) {
-          case 1: return "st";
-          case 2: return "nd";
-          case 3: return "rd";
-          default: return "th";
+          case 1:
+            return "st";
+          case 2:
+            return "nd";
+          case 3:
+            return "rd";
+          default:
+            return "th";
         }
       }
 
@@ -111,7 +139,10 @@ export default function Command() {
       } else if (dom !== "*" && month !== "*") {
         schedule = `At ${hour}:${minute.padStart(2, "0")} on day ${dom} of ${monthNames[parseInt(month)] || month}`;
       } else if (dow !== "*") {
-        const days = dow.split(",").map((d) => dayNames[parseInt(d)] || d).join(", ");
+        const days = dow
+          .split(",")
+          .map((d) => dayNames[parseInt(d)] || d)
+          .join(", ");
         schedule = `At ${hour}:${minute.padStart(2, "0")} on ${days}`;
       } else if (dom !== "*") {
         schedule = `At ${hour}:${minute.padStart(2, "0")} on day ${dom} of each month`;

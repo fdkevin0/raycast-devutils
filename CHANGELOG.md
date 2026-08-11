@@ -3,6 +3,7 @@
 ## [2.0.0] - 2026-06-10
 
 ### Changed
+
 - **Breaking**: Removed dependency on the external DevUtils macOS app. All tools now work inline within the extension.
 - Upgraded to `@raycast/api` v1.91.0 and `@raycast/utils` v1.18.0
 - Added prettier-based formatting for JS, CSS, SCSS, LESS, HTML
@@ -12,6 +13,7 @@
 - Added sql-formatter for SQL formatting
 
 ### Added
+
 - Interactive view modes for most tools (Form-based input, Detail-based output)
 - Color converter with visual color block
 - QR code generator with SVG rendering
@@ -25,4 +27,5 @@
 - Cron parser with human-readable schedule descriptions
 
 ## [1.0.0] - Initial Release
+
 - Original extension by @vietanhlehuu that opened DevUtils macOS app

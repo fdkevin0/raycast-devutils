@@ -1,4 +1,4 @@
-import { Clipboard, showToast, Toast, showHUD } from "@raycast/api";
+import { Clipboard, showHUD } from "@raycast/api";
 import { readClipboard } from "./utils/clipboard";
 
 export default async function Command() {
@@ -19,7 +19,9 @@ export default async function Command() {
       const sizeInBytes = Math.round((base64Data.length * 3) / 4);
       await showHUD(`Image: ${mimeType}, ~${sizeInBytes} bytes (decoded base64 data in clipboard)`);
       // Copy just the decoded info summary
-      await Clipboard.copy(`Image Type: ${mimeType}\nBase64 Length: ${base64Data.length} chars\nApprox Size: ${sizeInBytes} bytes`);
+      await Clipboard.copy(
+        `Image Type: ${mimeType}\nBase64 Length: ${base64Data.length} chars\nApprox Size: ${sizeInBytes} bytes`,
+      );
       return;
     }
   }

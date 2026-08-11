@@ -1,4 +1,4 @@
-import { Action, ActionPanel, Form, Detail, Clipboard, showToast, Toast } from "@raycast/api";
+import { Action, ActionPanel, Form, Detail, Clipboard } from "@raycast/api";
 import { usePromise } from "@raycast/utils";
 import { useState } from "react";
 
@@ -26,7 +26,9 @@ export default function Command() {
       const matches = Array.from(testString.matchAll(regex));
 
       if (matches.length === 0) {
-        setResultMarkdown(`## RegExp Results\n\n**Pattern:** \`/${pattern}/${flagStr}\`\n\n**Test string:**\n\`\`\`\n${testString}\n\`\`\`\n\nNo matches found.`);
+        setResultMarkdown(
+          `## RegExp Results\n\n**Pattern:** \`/${pattern}/${flagStr}\`\n\n**Test string:**\n\`\`\`\n${testString}\n\`\`\`\n\nNo matches found.`,
+        );
         setShowResult(true);
         return;
       }
@@ -70,10 +72,7 @@ export default function Command() {
         markdown={resultMarkdown}
         actions={
           <ActionPanel>
-            <Action
-              title="Edit Regex"
-              onAction={() => setShowResult(false)}
-            />
+            <Action title="Edit Regex" onAction={() => setShowResult(false)} />
             <Action.CopyToClipboard title="Copy Results" content={resultMarkdown} />
           </ActionPanel>
         }
@@ -101,7 +100,12 @@ export default function Command() {
       }
     >
       <Form.TextField id="pattern" title="Pattern" placeholder="/regex/" defaultValue={lastValues?.pattern} />
-      <Form.TextArea id="testString" title="Test String" placeholder="String to test against..." defaultValue={lastValues?.testString || clipboardText} />
+      <Form.TextArea
+        id="testString"
+        title="Test String"
+        placeholder="String to test against..."
+        defaultValue={lastValues?.testString || clipboardText}
+      />
       <Form.TagPicker id="flags" title="Flags" defaultValue={defaultFlags}>
         <Form.TagPicker.Item value="g" title="g — Global" />
         <Form.TagPicker.Item value="i" title="i — Case Insensitive" />

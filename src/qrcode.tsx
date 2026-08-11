@@ -37,7 +37,7 @@ export default function Command() {
           `![QR Code](${dataUri})`,
           "",
           `**Size:** ${size}px`,
-        ].join("\n")
+        ].join("\n"),
       );
 
       // Also copy the text content
@@ -77,7 +77,12 @@ export default function Command() {
         </ActionPanel>
       }
     >
-      <Form.TextArea id="text" title="Text" placeholder="Text to encode as QR code..." defaultValue={clipboardText || ""} />
+      <Form.TextArea
+        id="text"
+        title="Text"
+        placeholder="Text to encode as QR code..."
+        defaultValue={clipboardText || ""}
+      />
       <Form.Dropdown id="size" title="Size" defaultValue="256">
         <Form.Dropdown.Item value="128" title="128px" />
         <Form.Dropdown.Item value="256" title="256px" />

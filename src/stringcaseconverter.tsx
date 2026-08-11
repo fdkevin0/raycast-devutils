@@ -1,5 +1,4 @@
 import { readClipboard, copyToClipboard } from "./utils/clipboard";
-import { showToast, Toast } from "@raycast/api";
 
 export default async function Command() {
   const text = await readClipboard();
@@ -10,15 +9,11 @@ export default async function Command() {
 
   // Generate all case variants
   function toCamelCase(s: string): string {
-    return s
-      .replace(/[-_\s]+(.)?/g, (_, c) => (c ? c.toUpperCase() : ""))
-      .replace(/^(.)/, (_, c) => c.toLowerCase());
+    return s.replace(/[-_\s]+(.)?/g, (_, c) => (c ? c.toUpperCase() : "")).replace(/^(.)/, (_, c) => c.toLowerCase());
   }
 
   function toPascalCase(s: string): string {
-    return s
-      .replace(/[-_\s]+(.)?/g, (_, c) => (c ? c.toUpperCase() : ""))
-      .replace(/^(.)/, (_, c) => c.toUpperCase());
+    return s.replace(/[-_\s]+(.)?/g, (_, c) => (c ? c.toUpperCase() : "")).replace(/^(.)/, (_, c) => c.toUpperCase());
   }
 
   function toSnakeCase(s: string): string {
@@ -51,7 +46,10 @@ export default async function Command() {
   }
 
   function toSentenceCase(s: string): string {
-    return s.replace(/[-_\s]+/g, " ").replace(/^\w/, (c) => c.toUpperCase()).trim();
+    return s
+      .replace(/[-_\s]+/g, " ")
+      .replace(/^\w/, (c) => c.toUpperCase())
+      .trim();
   }
 
   const variants = [

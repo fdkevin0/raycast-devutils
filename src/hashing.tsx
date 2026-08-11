@@ -3,16 +3,7 @@ import { usePromise } from "@raycast/utils";
 import { createHash } from "crypto";
 import { useState } from "react";
 
-const ALGORITHMS = [
-  "md5",
-  "sha1",
-  "sha256",
-  "sha384",
-  "sha512",
-  "sha3-256",
-  "sha3-384",
-  "sha3-512",
-] as const;
+const ALGORITHMS = ["md5", "sha1", "sha256", "sha384", "sha512", "sha3-256", "sha3-384", "sha3-512"] as const;
 
 export default function Command() {
   const { data: clipboardText, isLoading } = usePromise(async () => {
@@ -35,7 +26,7 @@ export default function Command() {
           "```",
           hash,
           "```",
-        ].join("\n")
+        ].join("\n"),
       );
     } catch (error) {
       showToast({ style: Toast.Style.Failure, title: "Hash error", message: String(error) });

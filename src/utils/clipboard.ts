@@ -24,19 +24,32 @@ export async function copyToClipboard(text: string, label?: string): Promise<voi
   await showHUD(label || "Copied to clipboard");
 }
 
-/**
- * Paste text directly (replaces clipboard and pastes into frontmost app).
- */
-export async function pasteText(text: string): Promise<void> {
-  await Clipboard.paste(text);
+type ClipboardTransform = (text: string) => string | Promise<string>;
+
+interface ClipboardCommandOptions {
+  transform: ClipboardTransform;
+  success: string;
+  failure: string;
+  fallbackMessage?: string;
 }
 
-/**
- * Show a success HUD, or a failure toast if message is null.
- */
-export async function showResult(result: string | null, successLabel?: string): Promise<void> {
-  if (result === null) {
-    return; // Error already shown by readClipboard or processing
+/** Run the common read → transform → copy flow used by no-view commands. */
+export async function runClipboardCommand({
+  transform,
+  success,
+  failure,
+  fallbackMessage = "Check the clipboard content",
+}: ClipboardCommandOptions): Promise<void> {
+  const text = await readClipboard();
+  if (text === null) return;
+
+  try {
+    await copyToClipboard(await transform(text), success);
+  } catch (error) {
+    await showToast({
+      style: Toast.Style.Failure,
+      title: failure,
+      message: error instanceof Error ? error.message : fallbackMessage,
+    });
   }
-  await copyToClipboard(result, successLabel);
 }

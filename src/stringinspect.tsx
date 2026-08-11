@@ -38,8 +38,10 @@ export default function Command() {
     info.push("");
 
     // Encoding checks
+    // eslint-disable-next-line no-control-regex
     const hasNonAscii = /[^\x00-\x7F]/.test(trimmed);
-    const hasNonLatin = /\p{Script_Extensions=Latin}/u.test(trimmed) === false || /[^\p{Script=Latin}\s\d\p{P}]/u.test(trimmed);
+    const hasNonLatin =
+      /\p{Script_Extensions=Latin}/u.test(trimmed) === false || /[^\p{Script=Latin}\s\d\p{P}]/u.test(trimmed);
 
     info.push(`### Encoding`);
     info.push(`- **ASCII only:** ${hasNonAscii ? "No" : "Yes"}`);
@@ -93,5 +95,7 @@ export default function Command() {
     return info.join("\n");
   }, []);
 
-  return <Detail isLoading={isLoading} markdown={data || "No content in clipboard"} navigationTitle="String Inspector" />;
+  return (
+    <Detail isLoading={isLoading} markdown={data || "No content in clipboard"} navigationTitle="String Inspector" />
+  );
 }

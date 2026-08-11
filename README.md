@@ -7,6 +7,7 @@ This extension provides 40+ developer utilities directly inline:
 ## Tools
 
 ### Encoding / Decoding
+
 - **Base64 String Encode/Decode** — Encode or decode Base64 text
 - **Base64 Image Encode/Decode** — Work with Base64-encoded images
 - **URL Encode/Decode** — Encode or decode URL strings
@@ -14,6 +15,7 @@ This extension provides 40+ developer utilities directly inline:
 - **Backslash Escape/Unescape** — Escape/unescape backslashes and special chars
 
 ### Formatting
+
 - **JSON Format/Validate** — Format or minify JSON
 - **JS Beautify/Minify** — Format JavaScript with prettier
 - **CSS Beautify/Minify** — Format CSS
@@ -25,6 +27,7 @@ This extension provides 40+ developer utilities directly inline:
 - **ERB Beautify/Minify** — Format ERB templates
 
 ### Conversion
+
 - **CSV to JSON** — Convert CSV data to JSON
 - **JSON to CSV** — Convert JSON to CSV
 - **JSON to YAML** — Convert JSON to YAML
@@ -38,6 +41,7 @@ This extension provides 40+ developer utilities directly inline:
 - **String Case Converter** — Convert between camelCase, snake_case, etc.
 
 ### Utilities
+
 - **Hash Generator** — Generate MD5, SHA1, SHA256, SHA512 hashes
 - **JWT Debugger** — Decode and inspect JWT tokens
 - **UUID/ULID Generator** — Generate UUIDs and ULIDs
@@ -53,15 +57,18 @@ This extension provides 40+ developer utilities directly inline:
 - **Text Diff Checker** — Compare two texts and find differences
 
 ### Preview
+
 - **Markdown Preview** — Preview markdown from clipboard
 - **HTML Preview** — View HTML source from clipboard
 
 ### Auto Detect
+
 - **Auto Detect** — Automatically detect clipboard content type and suggest the best tool
 
 ## Usage
 
 Most commands work with your clipboard:
+
 1. Copy some text to your clipboard
 2. Run the desired command via Raycast
 3. The result is automatically copied back to your clipboard
